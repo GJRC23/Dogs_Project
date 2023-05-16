@@ -1,0 +1,98 @@
+.container {
+    width: 100%;
+    max-height: calc(100vh - var(--h-navbar));
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    background-color: rgba(var(--colors-text), 0.05);
+  }
+  
+  .container__card {
+    width: 100%;
+    margin: calc(var(--ml-container) / 2) var(--mr-container);
+    display: flex;
+    flex-direction: row;
+    background-color: var(--colors-secondary);
+    border-radius: calc(var(--rounded-20) / 2);
+    -webkit-border-radius: calc(var(--rounded-20) / 2);
+    -moz-border-radius: calc(var(--rounded-20) / 2);
+    -ms-border-radius: calc(var(--rounded-20) / 2);
+    -o-border-radius: calc(var(--rounded-20) / 2);
+    overflow: hidden;
+  }
+  
+  .container__card > *:nth-child(1) {
+    width: 60%;
+    border-right: solid 1px rgba(var(--colors-text), 0.05);
+  }
+  
+  .container__card > *:nth-child(2) {
+    width: 40%;
+  }
+  .container__card__image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .container__card__details {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  
+  .container__card__details__name h1 {
+    font-size: calc(var(--text-90) / 2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .container__card__details__characteristic_list {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .container__card__details__characteristic_list > div > h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .container__card__details__temperaments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    overflow-y: auto;
+    max-height: 180px;
+  }
+  
+  @media screen and (max-width: 1536px) {
+    .container {
+      max-height: fit-content;
+    }
+    .container__card {
+      flex-direction: column;
+      height: fit-content;
+    }
+    .container__card > *:nth-child(1) {
+      width: 100%;
+      height: 40%;
+      border-right: none;
+      border-bottom: solid 1px rgba(var(--colors-text), 0.05);
+    }
+    .container__card > *:nth-child(2) {
+      width: 100%;
+      height: fit-content;
+    }
+  }
+  
+  @media screen and (max-width: 640px) {
+    .container__card__details {
+      padding: 20px;
+    }
+  }
+  
