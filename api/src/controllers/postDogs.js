@@ -2,7 +2,7 @@ const { Dog, Temperament } = require('../db');
 const { Op } = require('sequelize');
 const { getTemps } = require('./getTemps');
 
-const postDogs = async (name, height, weight, age, image, temperament) => {
+const postDogs = async (name, height, weight, age, origin, image, temperament) => {
     //We search if there is a dog with the same name in our DB using the Op.iLike operator to search without importing uppercases or lowercases. 
     const dbResponse = await Dog.findAll({
         where: {
@@ -19,6 +19,7 @@ const postDogs = async (name, height, weight, age, image, temperament) => {
         height: height,
         weight: weight,
         age: age,
+        origin: origin,
         image: image,
     });
     //We verify if the temperaments table is loaded using count(), if it is empty we create it using getTemps()

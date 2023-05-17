@@ -19,6 +19,7 @@ const getDbDogs = async () => {
             height: dog.height,
             age: dog.age,
             image: dog.image,
+            origin: dog.origin,
             temperament: dog.temperaments?.map(temperament => temperament.name)
         }
     })

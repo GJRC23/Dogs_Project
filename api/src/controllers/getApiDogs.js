@@ -7,12 +7,13 @@ const getApiDogs = async () => {
         return {
             id: dog.id,
             name: dog.name,
-            age: dog.life_span,
-            image: dog.image.url,
             height: dog["height"]["metric"],
             weight: dog["weight"]["metric"],
+            age: dog.life_span,
+            temperament: dog.temperament?.split(",").map(temperament => temperament.trim()),
+            origin: dog.origin,
+            image: dog.image.url,
             //We access to the properties using bracket notation because they are always the same
-            temperament: dog.temperament?.split(",").map(temperament => temperament.trim())
         }
     })
     return infoData;

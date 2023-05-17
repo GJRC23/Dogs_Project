@@ -1,0 +1,13 @@
+body {
+    background-image: url(https://media.istockphoto.com/id/1262376786/photo/banner-hide-funny-surprised-dog-puppy-isolated-on-yellow-background.jpg?s=170667a&w=0&k=20&c=4fkGQDW9D9HpC5fkk7Tsc8f5xlaz_8YjNElYdXLkSns=);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Mantener la imagen de fondo fija */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .home-page {
+    height: 100vh;
+  }

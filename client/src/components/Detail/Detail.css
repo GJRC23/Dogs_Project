@@ -1,0 +1,55 @@
+.Backbtn{
+
+}
+
+.detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-container {
+    width: 50%;
+    height: 100%;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-container img {
+    border-radius: 100px;
+    width: 600px;
+    height: 450px;
+    object-fit: contain;
+    pointer-events: none;
+  }  
+  
+  .detail-titles {
+    border-style: solid;
+    border-color: black;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0%;
+    margin: 0;
+  }
+
+  #detailH1 {
+    color: white;
+    font-size: 50px;
+    padding: 10px 10px;
+    margin: 10px 10px;
+  }
+  
+  .detailH2 {
+    color: white;
+    font-weight: 100;
+    font-size: 35px;
+    padding: 10px 10px;
+    margin: 10px 10px;
+  }

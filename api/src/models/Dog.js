@@ -12,10 +12,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     height: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,6 +21,14 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     age: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    origin: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image: {
       type: DataTypes.STRING,
       allowNull: true,
     },

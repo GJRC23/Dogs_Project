@@ -1,0 +1,38 @@
+.searchBar{
+    padding: 5px;
+    margin: 10px;
+}
+
+#input-search{
+    text-align: left;
+    border-radius: 5px;
+    margin-right: 10px;
+    border-width: 0.5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.agregarBtn{
+    font-size: 15px;
+    border-radius: 5px;
+    margin-right: 20px;
+    padding: 5px 20px;
+    background-color: #f1c40f;
+    border-width: 0.5px;
+    cursor: pointer;
+}
+.agregarBtn a {
+    text-decoration: none;
+    color: #f1c40f;
+}
+.agregarBtn a:hover {
+    text-decoration: none;
+    color:#f1c40f;
+}
+.agregarBtn:hover {
+    background-color: transparent;
+    border-style: solid;
+    border-color: #f1c40f;
+    color:#f1c40f;
+    }
