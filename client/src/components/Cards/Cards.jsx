@@ -1,7 +1,16 @@
 import './Cards.css';
 import Card from '../Card/Card.jsx';
 
-export default function Cards({ dogs }) {
+import { useSelector } from "react-redux";
+
+const Cards = () => {
+  const { dogsFyO, page } = useSelector(state => state);
+
+  let desde = (page - 1) * 12;
+  let hasta = page * 12;
+
+  const dogs = dogsFyO?.slice(desde, hasta);
+
   return (
     <div className="cards">
       {
@@ -23,3 +32,5 @@ export default function Cards({ dogs }) {
     </div>
   );
 }
+
+export default Cards;

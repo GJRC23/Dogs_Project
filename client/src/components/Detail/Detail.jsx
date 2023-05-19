@@ -22,7 +22,7 @@ const Detail = () => { // Asegúrate de pasar la prop onSearch correctamente
 
     return (
         <div className="detail-container">
-            <Link to='/home' className='BackBtn'>Back </Link>
+            <Link to='/home' className='BackBtn'>{"<- BACK"}</Link>
 
             <div className="detail-titles">
                 <h1 id="detailH1">{dog?.name}</h1>
@@ -33,6 +33,7 @@ const Detail = () => { // Asegúrate de pasar la prop onSearch correctamente
                     <h2 className="detailH2">LIFE SPAN : {dog?.age}</h2>
                     {dog?.temperament && <h2 className="detailH2">Temperament: {dog?.temperament.join(', ')}</h2>}
                     <h2 className="detailH2">ORIGIN : {dog?.origin}</h2>
+                    <h2 className="detailH2">ID : {dog?.id}</h2>
                 </div>
             </div>
 

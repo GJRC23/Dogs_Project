@@ -1,7 +1,7 @@
 import './Card.css';
 import { Link } from 'react-router-dom';
 
-export default function Card({ id, name, weight, height, temperament, origin, image }) {
+const Card = ({ id, name, weight, temperament, image }) => {
   return (
     <div className="card">
       <img className="cardImg" src={image} alt='' />
@@ -10,9 +10,10 @@ export default function Card({ id, name, weight, height, temperament, origin, im
           <h2 id="name">{name}</h2>
         </Link>
           <h3 id="weight">Weight: {weight}</h3>
-          <h3 id="height">Height: {height}</h3>
           {temperament && <h3 id="temperament">Temperament: {temperament.join(', ')}</h3>}
       </div>
     </div>
   );
 }
+
+export default Card;

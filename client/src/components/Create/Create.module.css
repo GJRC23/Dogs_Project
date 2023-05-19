@@ -1,0 +1,161 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .container__card {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    row-gap: 20px;
+    padding: 40px;
+    margin-top: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .container__card > h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .container__card__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    color: white;
+  }
+  
+  .container__card__form > button {
+    align-self: flex-end;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-left: 15px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    background-color: #f1c40f;
+    border-width: 0.5px;
+    cursor: pointer;
+  }
+  
+  .container__card__form > button:hover {
+    background-color: transparent;
+    border-style: solid;
+    border-color: #f1c40f;
+    color: #f1c40f;
+  }
+  
+  .container__card__form__container {
+    display: flex;
+    column-gap: 40px;
+  }
+  
+  .container__card__form__container__leftSide {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    height: fit-content;
+    font-size: 25px;
+  }
+  
+  .container__card__form__container__leftSide input {
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 15px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #f1c40f;
+    color: white;
+  }
+  
+  .container__card__form__container__leftSide > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  
+  .container__card__form__container__leftSide > div > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+  }
+  
+  .container__card__form__container__rightSide {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    font-size: 25px;
+  }
+  
+  .container__card__form__container__rightSide__temperaments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 4px;
+    overflow-y: scroll;
+  }
+  
+  .container__card__form__container__rightSide__temperaments > label > input {
+    border: 1px solid transparent;
+  }
+
+  .container__card__form__container__rightSide__temperaments > label {
+    border: 1px solid transparent;
+    font-size: 20px;
+  }
+
+  .container__card__form__container__rightSide__temperaments > label:hover {
+    color: #f1c40f;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+    border-color: #f1c40f;
+  }
+
+  .container__card__form__container__rightSide__temperaments > label:active {
+    color: #f1c40f;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+    border-color: #f1c40f;
+  }
+  
+  .inputError {
+    border: 1px solid rgba(255, 0, 0, 0.8) !important;
+  }
+  
+  .textError {
+    color: rgba(255, 0, 0, 0.8) !important;
+  }
+  
+  .BackBtnCreate{
+    font-size: 15px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-left: -100px;
+    padding: 5px 20px;
+    border-style: solid;
+    background-color: #f1c40f;
+    border-width: 0.5px;
+    cursor: pointer;
+  }
+  .BackBtnCreate a:hover {
+    text-decoration: none;
+    background-color:rgba(0, 0, 0, 0.7);
+  }
+  .BackBtnCreate:hover {
+    color: #f1c40f;
+    background-color: transparent;
+    border-style: solid;
+    background-color:rgba(0, 0, 0, 0.7);
+    }

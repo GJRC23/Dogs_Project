@@ -1,12 +1,30 @@
-.Backbtn{
-
+.BackBtn{
+  font-size: 15px;
+  border-radius: 5px;
+  margin-right: 20px;
+  margin-left: 15px;
+  padding: 5px 20px;
+  border-style: solid;
+  background-color: #f1c40f;
+  border-width: 0.5px;
+  cursor: pointer;
 }
+.BackBtn a:hover {
+  text-decoration: none;
+  background-color:rgba(0, 0, 0, 0.7);
+}
+.BackBtn:hover {
+  color: #f1c40f;
+  background-color: transparent;
+  border-style: solid;
+  background-color:rgba(0, 0, 0, 0.7);
+  }
 
 .detail-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: fixed;
+    position:absolute;
     width: 100%;
     height: 100%;
   }
@@ -21,7 +39,6 @@
   }
   
   .image-container img {
-    border-radius: 100px;
     width: 600px;
     height: 450px;
     object-fit: contain;
@@ -31,12 +48,13 @@
   .detail-titles {
     border-style: solid;
     border-color: black;
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    flex: 1; /* Permite que el contenedor ocupe todo el espacio disponible */
+    display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 0%;
-    margin: 0;
+    margin-left: 25px;
   }
 
   #detailH1 {
