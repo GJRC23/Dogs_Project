@@ -59,38 +59,40 @@ const Home = () => {
   return (
     <div className="home-page">
       <Nav onSearch={onSearch} />
-    <div className='filters'>
-      <select className='select' onChange={handleOrder}>
-        <option value="A">A-Z</option>
-        <option value="D">Z-A</option>
-      </select>
+      <div className='filters'>
+        <select className='select' onChange={handleOrder}>
+          <option value="A">A-Z</option>
+          <option value="D">Z-A</option>
+        </select>
 
-      <select className="select" onChange={handleWeightOrder}>
-        <option value="">Sort by Weight</option>
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
+        <select className="select" onChange={handleWeightOrder}>
+          <option value="">Sort by Weight</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
 
-      <select className='select' onChange={handleFilter}>
-        <option value="">All Temperaments</option>
-        {temperaments.map((temperament) => (
-          <option key={temperament.id} value={temperament.name}>
-            {temperament.name}
-          </option>
-        ))}
-      </select>
+        <select className='select' onChange={handleFilter}>
+          <option value="">All Temperaments</option>
+          {temperaments.map((temperament) => (
+            <option key={temperament.id} value={temperament.name}>
+              {temperament.name}
+            </option>
+          ))}
+        </select>
 
-      <select className='select' onChange={handleOriginFilter}>
-        <option value="">All Origins</option>
-        <option value="API">API</option>
-        <option value="Database">Database</option>
-      </select>
-    </div>
+        <select className='select' onChange={handleOriginFilter}>
+          <option value="">All Origins</option>
+          <option value="API">API</option>
+          <option value="Database">Database</option>
+        </select>
+      </div>
 
       <Cards dogs={dogs} />
+
       <div className="pagiCont">
-                <Paginate />
-            </div>
+        <Paginate />
+      </div>
+
     </div>
   );
 };

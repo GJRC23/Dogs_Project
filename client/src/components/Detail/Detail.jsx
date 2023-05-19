@@ -31,7 +31,7 @@ const Detail = () => { // Asegúrate de pasar la prop onSearch correctamente
                     <h2 className="detailH2">HEIGHT : {dog?.height}</h2>
                     <h2 className="detailH2">WEIGHT : {dog?.weight}</h2>
                     <h2 className="detailH2">LIFE SPAN : {dog?.age}</h2>
-                    {dog?.temperament && <h2 className="detailH2">Temperament: {dog?.temperament.join(', ')}</h2>}
+                    {dog?.temperament && <h2 className="detailH2">TEMPERAMENT: {dog?.temperament.join(', ')}</h2>}
                     <h2 className="detailH2">ORIGIN : {dog?.origin}</h2>
                     <h2 className="detailH2">ID : {dog?.id}</h2>
                 </div>

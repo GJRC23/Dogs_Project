@@ -29,15 +29,17 @@ const reducer = (state = initialState, { type, payload }) => {
         return { ...state, page: state.page - 1 };
 
     case FILTER_BREEDS_BY_TEMPERAMENT:
-        const dogFiltred = state.allDogs.filter(dog => {
-            let veri = dog.types;
-            if (veri.includes(payload)) return dog;
-        })
-
-        return {
-            ...state,
-            dogsFyO: dogFiltred
-        };
+      const dogFiltered = state.allDogs.filter(dog => {
+        let veri = dog.types;
+        if (Array.isArray(veri) && veri.includes(payload)) {
+          return dog;
+        }
+      });
+    
+      return {
+        ...state,
+        dogsFyO: dogFiltered
+      };
 
    case BY_BASE_LOCAL:
     if (payload === "base") {
