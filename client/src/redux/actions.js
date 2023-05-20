@@ -1,24 +1,54 @@
 import axios from "axios";
 
-import { GET_TEMPS, GET_DOGS, FILTER_BREEDS_BY_TEMPERAMENT, BY_BASE_LOCAL, ORDER, ORDER_WEIGHT, NEXT_PAGE, BACK_PAGE, SET_TEMPERAMENTS, ADD_TEMPERAMENTS } from './actions-types';
+import { 
+  GET_DOGS,
+  GET_TEMPS,
+  GET_BY_NAME,
+  FILTER_BREEDS_BY_TEMPERAMENT,
+  BY_BASE_LOCAL,
+  ORDER,
+  ORDER_WEIGHT,
+  NEXT_PAGE,
+  BACK_PAGE,
+  SET_TEMPERAMENTS,
+  ADD_TEMPERAMENTS 
+} from './actions-types';
 
 export const getDogs = () => {
   return async (dispatch) => {
-      const databdd = await axios.get("http://localhost:3001/dogs");
-      const dogsb = databdd.data;
-      const dataapi = await axios.get("http://localhost:3001/dogs");
-      const dogsa = dataapi.data;
+    try {
+      const dataDb = await axios.get("http://localhost:3001/dogs");
+      const dogsB = dataDb.data;
+      const dataApi = await axios.get("https://api.thedogapi.com/v1/breeds");
+      const dogsA = dataApi.data;
 
-      dispatch({ type: GET_DOGS, payload: [...dogsb, ...dogsa] });
+      dispatch({ 
+        type: GET_DOGS, 
+        payload: { apiDogs: dogsA, dbDogs: dogsB } 
+      });
+    } catch (error) {
+      // Manejo de errores
+      console.error(error);
+    }
   };
 };
 
 export const getTemps = () => {
   return async (dispatch) => {
       const temps = await axios.get("http://localhost:3001/temperaments");
-      const dogsa = temps.data;
+      const dogsA = temps.data;
 
-      dispatch({ type: GET_TEMPS, payload: [...dogsa] });
+      dispatch({ type: GET_TEMPS, payload: [...dogsA] });
+  };
+}
+
+export const getByName = (name) => {
+  return async (dispatch) => {
+    const response = await axios.get(`http://localhost:3001/dogs/?name=${name}`);
+    return dispatch ({
+      type: GET_BY_NAME,
+      payload: response.data,
+    })
   };
 }
 
@@ -35,19 +65,16 @@ export const backPage = () => {
   };
 };
 
-export const orderCards = (order) => ({
-  type: ORDER,
-  payload: order,
-});
+export const orderCards = (order) => {
+  return { type: ORDER, payload: order };
+};
 
 export const orderCardsByWeight = (order) => ({
-  type: ORDER_WEIGHT,
-  payload: order,
-});
+  type: ORDER_WEIGHT,payload: order,}
+);
 
 export const filterBreedsByTemperament = (type) => {
   return async (dispatch) => {
-
       dispatch({ type: FILTER_BREEDS_BY_TEMPERAMENT, payload: type });
   };
 };

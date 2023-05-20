@@ -4,17 +4,17 @@ import Card from '../Card/Card.jsx';
 import { useSelector } from "react-redux";
 
 const Cards = () => {
-  const { dogsFyO, page } = useSelector(state => state);
+  const { dogsList, page } = useSelector(state => state);
 
-  let desde = (page - 1) * 12;
-  let hasta = page * 12;
+  let desde = (page - 1) * 8;
+  let hasta = page * 8;
 
-  const dogs = dogsFyO?.slice(desde, hasta);
+  const dogs = dogsList?.slice(desde, hasta);
 
   return (
     <div className="cards">
       {
-        dogs.map(({ id, name, weight, height, temperament, origin, image }) => {
+        dogs && dogs.map(({ id, name, weight, height, temperament, origin, image }) => {
           return (
             <Card
               key={id}
