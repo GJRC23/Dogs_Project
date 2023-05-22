@@ -3,7 +3,7 @@ import {
   GET_DOGS,
   GET_BY_NAME,
   FILTER_BREEDS_BY_TEMPERAMENT,
-  BY_BASE_LOCAL,
+  BY_ORIGIN,
   ORDER,
   ORDER_WEIGHT,
   NEXT_PAGE,
@@ -24,8 +24,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case GET_DOGS:
       return {
           ...state,
-          allDogs: payload,
-          dogsCopy: payload
+          allDogs: payload.apiDogs,
+          dogsCopy: payload.dbDogs
       }
 
     case GET_TEMPS:
@@ -41,35 +41,36 @@ const reducer = (state = initialState, { type, payload }) => {
       }
 
     case ORDER:
-      const orderDogs = [...state.dogsCopy]
+      const orderDogs = [...state.allDogs];
       return {
         ...state,
-        dogsCopy:
+        allDogs:
           payload === "A"
-            ? orderDogs.sort((a, b) => a.name - b.name)
-            : orderDogs.sort((a, b) => b.name - a.name)
+            ? orderDogs.sort((a, b) => a.id - b.id)
+            : orderDogs.sort((a, b) => b.id - a.id)
       };
 
-      case ORDER_WEIGHT:
-        let orderDogsWeight = [];
-        if (Array.isArray(state.dogsCopy)) {
-          orderDogsWeight = [...state.dogsCopy];
-        }
-        const sortedDogsByWeight = orderDogsWeight.sort((a, b) => {
-          if (payload === 'asc') {
-            return a.weight.metric - b.weight.metric;
-          } else if (payload === 'desc') {
-            return b.weight.metric - a.weight.metric;
+    case ORDER_WEIGHT:
+      const orderDogsByWeight = [...state.allDogs];
+      return {
+        ...state,
+        allDogs: orderDogsByWeight.sort((a, b) => {
+          const weightA = a.weight.metric ? a.weight.metric.split(" – ") : [];
+          const weightB = b.weight.metric ? b.weight.metric.split(" – ") : [];
+    
+          const minA = weightA.length > 0 ? Number(weightA[0]) : 0;
+          const minB = weightB.length > 0 ? Number(weightB[0]) : 0;
+    
+          if (payload === "A") {
+            return minA - minB;
+          } else if (payload === "D") {
+            return minB - minA;
           } else {
             return 0;
           }
-        });
-        return {
-          ...state,
-          dogsCopy: sortedDogsByWeight,
-          orderByWeight: payload, // Actualizar el orden por peso en el estado
-        };
-    
+        })
+      };
+  
     case NEXT_PAGE:
         return { ...state, page: state.page + 1 };
     case BACK_PAGE:
@@ -86,26 +87,28 @@ const reducer = (state = initialState, { type, payload }) => {
         dogsCopy: dogsFiltered
       };
 
-   case BY_BASE_LOCAL:
-    if (payload === "base") {
-      return {
-          ...state,
-          dogsCopy: state.allDogs.filter(dog => dog.id.length > 15)
-      };
-    }
-    if (payload === "api") {
+    case BY_ORIGIN:
 
-        const filtId = state.allDogs.filter(dog => dog.id < 500);
-        return {
-            ...state,
-            dogsCopy: [...filtId]
-        };
-    } if (payload === "todos") {
-        return {
-            ...state,
-            dogsCopy: [...state.allDogs]
-        }
-    }
+      if (type.payload === "Database") {
+          return {
+              ...state,
+              allDogs: state.dogsCopy.filter(recipe => recipe.id.length > 35)
+          };
+      }
+      if (type.payload === "Api") {
+          const dogsApiFiltered = state.dogsCopy.filter(recipe => typeof(recipe.id) === "number")
+          return {
+              ...state,
+              allDogs: [...dogsApiFiltered]
+          };
+      } 
+      if (type.payload === "ALL") {
+          return {
+              ...state,
+              allDogs: [...state.dogsCopy]
+          }
+      }
+      break
 
     case SET_TEMPERAMENTS:
       return {
@@ -115,8 +118,6 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case ADD_TEMPERAMENTS:
         return { ...state, temperaments: payload };
-
-
 
     default:
       return state;

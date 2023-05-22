@@ -4,12 +4,12 @@ import Card from '../Card/Card.jsx';
 import { useSelector } from "react-redux";
 
 const Cards = () => {
-  const { dogsList, page } = useSelector(state => state);
+  const { allDogs, page } = useSelector(state => state);
 
   let desde = (page - 1) * 8;
   let hasta = page * 8;
 
-  const dogs = dogsList?.slice(desde, hasta);
+  const dogs = allDogs?.slice(desde, hasta);
 
   return (
     <div className="cards">

@@ -4,7 +4,14 @@
     flex-grow: 1;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://cache.desktopnexus.com/thumbseg/407/407949-bigthumbnail.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: auto;
   }
   
   .container__card {

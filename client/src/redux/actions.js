@@ -5,7 +5,7 @@ import {
   GET_TEMPS,
   GET_BY_NAME,
   FILTER_BREEDS_BY_TEMPERAMENT,
-  BY_BASE_LOCAL,
+  BY_ORIGIN,
   ORDER,
   ORDER_WEIGHT,
   NEXT_PAGE,
@@ -19,7 +19,7 @@ export const getDogs = () => {
     try {
       const dataDb = await axios.get("http://localhost:3001/dogs");
       const dogsB = dataDb.data;
-      const dataApi = await axios.get("https://api.thedogapi.com/v1/breeds");
+      const dataApi = await axios.get("http://localhost:3001/dogs");
       const dogsA = dataApi.data;
 
       dispatch({ 
@@ -44,7 +44,7 @@ export const getTemps = () => {
 
 export const getByName = (name) => {
   return async (dispatch) => {
-    const response = await axios.get(`http://localhost:3001/dogs/?name=${name}`);
+    const response = await axios.get(`http://localhost:3001/dogs?name=${name}`);
     return dispatch ({
       type: GET_BY_NAME,
       payload: response.data,
@@ -66,12 +66,12 @@ export const backPage = () => {
 };
 
 export const orderCards = (order) => {
-  return { type: ORDER, payload: order };
+  return { type: ORDER, payload: order.toString() };
 };
 
-export const orderCardsByWeight = (order) => ({
-  type: ORDER_WEIGHT,payload: order,}
-);
+export const orderCardsByWeight = (order) => {
+  return { type: ORDER_WEIGHT, payload: order };
+};
 
 export const filterBreedsByTemperament = (type) => {
   return async (dispatch) => {
@@ -79,8 +79,8 @@ export const filterBreedsByTemperament = (type) => {
   };
 };
 
-export const getByOrigin = (origen) => {
-  return { type: BY_BASE_LOCAL, payload: origen };
+export const getByOrigin = (origin) => {
+  return { type: BY_ORIGIN, payload: origin };
 };
 
 export const setTemperaments = (temperamentsArray) => ({

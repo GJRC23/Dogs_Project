@@ -3,6 +3,9 @@ const { Op } = require('sequelize');
 const { getTemps } = require('./getTemps');
 
 const postDogs = async (name, height, weight, age, origin, image, temperament) => {
+
+    console.log('Image value:', image);
+
     //We search if there is a dog with the same name in our DB using the Op.iLike operator to search without importing uppercases or lowercases. 
     const dbResponse = await Dog.findAll({
         where: {
@@ -28,7 +31,7 @@ const postDogs = async (name, height, weight, age, origin, image, temperament) =
         await getTemps();
     }
     const tempsFound = [];
-    for (let i = 0; i < temperament.length; i++) {
+    for (let i = 0; temperament && i < temperament.length; i++) {
         const tempFound = await Temperament.findOne({ where: { name: temperament[i] } });
         if (!tempFound) {
             throw new Error(`Type of ${temperament[i]} does not exist`)

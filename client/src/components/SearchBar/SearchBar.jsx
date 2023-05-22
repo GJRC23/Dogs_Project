@@ -11,8 +11,8 @@ export default function SearchBar() {
    const handleChange = (event) => {
       setDog(event.target.value)
    }
-   const handleSubmit = (poke) => {
-       dispatch(getByName(poke))
+   const handleSubmit = (dog) => {
+       dispatch(getByName(dog))
    }
 
    return (

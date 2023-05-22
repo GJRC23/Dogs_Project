@@ -92,144 +92,144 @@ export default function CreateBreed() {
   useEffect(() => !temperaments.length && dispatch(requestTemperaments()), [dispatch, temperaments]);
 
   return (
-    <section className={s.container}>
+      <section className={s.container}>
 
-    <Link to='/home' className={s.BackBtnCreate}>{"<- BACK"}</Link>
+      <Link to='/home' className={s.BackBtnCreate}>{"<- BACK"}</Link>
 
-      <div className={s.container__card}>
-        <h1>Create a Dog</h1>
+        <div className={s.container__card}>
+          <h1>Create a Dog</h1>
 
-        <form className={s.container__card__form} onSubmit={handleSubmit}>
+          <form className={s.container__card__form} onSubmit={handleSubmit}>
 
-          <div className={s.container__card__form__container}>
+            <div className={s.container__card__form__container}>
 
-            <div ref={leftSectionRef} className={s.container__card__form__container__leftSide}>
-              <div>
-                <label>Name</label>
-                <Input
-                  key="name"
-                  className={`${formErrors.name ? s.inputError : ""}`}
-                  name="name"
-                  type="text"
-                  maxLength={30}
-                  placeholder="An example dog breed"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
-                {formErrors.name && <p className={s.textError}>{formErrors.name}</p>}
-              </div>
-
-              <div>
-                <label>Height range</label>
+              <div ref={leftSectionRef} className={s.container__card__form__container__leftSide}>
                 <div>
+                  <label>Name</label>
                   <Input
-                    key="heightMin"
-                    className={`${formErrors.heightMin ? s.inputError : ""}`}
-                    name="heightMin"
-                    type="number"
-                    min={1}
-                    max={100}
-                    placeholder={"30cm"}
-                    value={formData.heightMin}
+                    key="name"
+                    className={`${formErrors.name ? s.inputError : ""}`}
+                    name="name"
+                    type="text"
+                    maxLength={30}
+                    placeholder="An example dog breed"
+                    value={formData.name}
                     onChange={handleInputChange}
-                    onKeyPress={handleKeyPress}
-                    onPaste={handleKeyPress}
                   />
-                  -
-                  <Input
-                    key="heightMax"
-                    className={`${formErrors.heightMax ? s.inputError : ""}`}
-                    name="heightMax"
-                    type="number"
-                    min={1}
-                    max={100}
-                    placeholder={"46cm"}
-                    value={formData.heightMax}
-                    onChange={handleInputChange}
-                    onKeyPress={handleKeyPress}
-                    onPaste={handleKeyPress}
-                  />
+                  {formErrors.name && <p className={s.textError}>{formErrors.name}</p>}
                 </div>
-                {formErrors.heightMin && <p className={s.textError}>{formErrors.heightMin}</p>}
-                {formErrors.heightMax && <p className={s.textError}>{formErrors.heightMax}</p>}
-              </div>
 
-              <div>
-                <label>Weight range</label>
                 <div>
-                  <Input
-                    key="weightMin"
-                    className={`${formErrors.weightMin ? s.inputError : ""}`}
-                    name="weightMin"
-                    type="number"
-                    min={1}
-                    max={100}
-                    placeholder={"6kg"}
-                    value={formData.weightMin}
-                    onChange={handleInputChange}
-                    onKeyPress={handleKeyPress}
-                    onPaste={handleKeyPress}
-                  />
-                  -
-                  <Input
-                    key="weightMax"
-                    className={`${formErrors.weightMax ? s.inputError : ""}`}
-                    name="weightMax"
-                    type="number"
-                    min={1}
-                    max={100}
-                    placeholder={"12kg"}
-                    value={formData.weightMax}
-                    onChange={handleInputChange}
-                    onKeyPress={handleKeyPress}
-                    onPaste={handleKeyPress}
-                  />
+                  <label>Height range</label>
+                  <div>
+                    <Input
+                      key="heightMin"
+                      className={`${formErrors.heightMin ? s.inputError : ""}`}
+                      name="heightMin"
+                      type="number"
+                      min={1}
+                      max={100}
+                      placeholder={"30cm"}
+                      value={formData.heightMin}
+                      onChange={handleInputChange}
+                      onKeyPress={handleKeyPress}
+                      onPaste={handleKeyPress}
+                    />
+                    -
+                    <Input
+                      key="heightMax"
+                      className={`${formErrors.heightMax ? s.inputError : ""}`}
+                      name="heightMax"
+                      type="number"
+                      min={1}
+                      max={100}
+                      placeholder={"46cm"}
+                      value={formData.heightMax}
+                      onChange={handleInputChange}
+                      onKeyPress={handleKeyPress}
+                      onPaste={handleKeyPress}
+                    />
+                  </div>
+                  {formErrors.heightMin && <p className={s.textError}>{formErrors.heightMin}</p>}
+                  {formErrors.heightMax && <p className={s.textError}>{formErrors.heightMax}</p>}
                 </div>
-                {formErrors.weightMin && <p className={s.textError}>{formErrors.weightMin}</p>}
-                {formErrors.weightMax && <p className={s.textError}>{formErrors.weightMax}</p>}
+
+                <div>
+                  <label>Weight range</label>
+                  <div>
+                    <Input
+                      key="weightMin"
+                      className={`${formErrors.weightMin ? s.inputError : ""}`}
+                      name="weightMin"
+                      type="number"
+                      min={1}
+                      max={100}
+                      placeholder={"6kg"}
+                      value={formData.weightMin}
+                      onChange={handleInputChange}
+                      onKeyPress={handleKeyPress}
+                      onPaste={handleKeyPress}
+                    />
+                    -
+                    <Input
+                      key="weightMax"
+                      className={`${formErrors.weightMax ? s.inputError : ""}`}
+                      name="weightMax"
+                      type="number"
+                      min={1}
+                      max={100}
+                      placeholder={"12kg"}
+                      value={formData.weightMax}
+                      onChange={handleInputChange}
+                      onKeyPress={handleKeyPress}
+                      onPaste={handleKeyPress}
+                    />
+                  </div>
+                  {formErrors.weightMin && <p className={s.textError}>{formErrors.weightMin}</p>}
+                  {formErrors.weightMax && <p className={s.textError}>{formErrors.weightMax}</p>}
+                </div>
+
+                <div>
+                  <label>Life span</label>
+                  <Input
+                    key="life_span"
+                    className={`${formErrors.life_span ? s.inputError : ""}`}
+                    name="life_span"
+                    type="number"
+                    min={1}
+                    max={100}
+                    placeholder={"15 years"}
+                    value={formData.life_span}
+                    onChange={handleInputChange}
+                    onKeyPress={handleKeyPress}
+                    onPaste={handleKeyPress}
+                  />
+                  {formErrors.life_span && <p className={s.textError}>{formErrors.life_span}</p>}
+                </div>
               </div>
 
-              <div>
-                <label>Life span</label>
-                <Input
-                  key="life_span"
-                  className={`${formErrors.life_span ? s.inputError : ""}`}
-                  name="life_span"
-                  type="number"
-                  min={1}
-                  max={100}
-                  placeholder={"15 years"}
-                  value={formData.life_span}
-                  onChange={handleInputChange}
-                  onKeyPress={handleKeyPress}
-                  onPaste={handleKeyPress}
-                />
-                {formErrors.life_span && <p className={s.textError}>{formErrors.life_span}</p>}
+              <div ref={rightSectionRef} className={s.container__card__form__container__rightSide}>
+                <label>Temperaments</label>
+                <div className={s.container__card__form__container__rightSide__temperaments}>
+                  {temperaments.map((temperament) => (
+                    <Checkbox
+                      key={temperament.id}
+                      label={temperament.name}
+                      inputClassName={formErrors.temperaments ? s.inputError : ""}
+                      onChange={() => handleChecked(temperament.id, temperament.name)}
+                    />
+                  ))}
+                </div>
+                {formErrors.temperaments && <p className={s.textError}>{formErrors.temperaments}</p>}
               </div>
+
             </div>
 
-            <div ref={rightSectionRef} className={s.container__card__form__container__rightSide}>
-              <label>Temperaments</label>
-              <div className={s.container__card__form__container__rightSide__temperaments}>
-                {temperaments.map((temperament) => (
-                  <Checkbox
-                    key={temperament.id}
-                    label={temperament.name}
-                    inputClassName={formErrors.temperaments ? s.inputError : ""}
-                    onChange={() => handleChecked(temperament.id, temperament.name)}
-                  />
-                ))}
-              </div>
-              {formErrors.temperaments && <p className={s.textError}>{formErrors.temperaments}</p>}
-            </div>
+            <button type="submit">Create</button>
+          </form>
 
-          </div>
-
-          <button type="submit">Create</button>
-        </form>
-
-      </div>
-      {notificationMessage.message && <Notification text={notificationMessage.message} type={notificationMessage.type} onTimeout={setNotificationMessage} onButtonClick={setNotificationMessage} />}
-    </section>
+        </div>
+        {notificationMessage.message && <Notification text={notificationMessage.message} type={notificationMessage.type} onTimeout={setNotificationMessage} onButtonClick={setNotificationMessage} />}
+      </section>
   );
 }

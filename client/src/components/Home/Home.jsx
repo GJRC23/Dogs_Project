@@ -12,16 +12,18 @@ import { getDogs, getTemps, filterBreedsByTemperament, getByOrigin, orderCards, 
 const Home = () => {
   
   const dispatch = useDispatch();
+
   const allDogs = useSelector(state => state.allDogs);
   const temperaments = useSelector(state => state.temperaments);
-  const temperamentsArray = Array.isArray(temperaments) ? temperaments : [];
   
   const handleOrder = (event) => {
-    dispatch(orderCards(event.target.value));
+    const selectedOrder = event.target.value === "A" ? "A" : "D";
+    dispatch(orderCards(selectedOrder));
   };
   
   const handleWeightOrder = (event) => {
-    dispatch(orderCardsByWeight(event.target.value));
+    const selectedOrder = event.target.value === "A" ? "A" : "D";
+    dispatch(orderCardsByWeight(selectedOrder));
   };
   
   const handleFilter = (event) => {
@@ -30,15 +32,15 @@ const Home = () => {
   };
   
   const handleOrigin = (event) => {
-    dispatch(getByOrigin(event.target.value));
+    dispatch(getByOrigin(event));
 }
-  
+
   useEffect(() => {
 
     dispatch(getDogs())
     dispatch(getTemps())
 
-}, []);
+}, [dispatch]);
 
   return (
     <div className="home-page">
@@ -52,21 +54,21 @@ const Home = () => {
 
         <select className="select" onChange={handleWeightOrder}>
           <option value="">Sort by Weight</option>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
+          <option value="ASC">Ascending</option>
+          <option value="DESC">Descending</option>
         </select>
 
         <select className='select' onChange={handleFilter}>
           <option value="">All Temperaments</option>
-          {temperamentsArray.map((temperament) => (
-            <option key={temperament.id} value={temperament.name}>
-              {temperament.name}
+          {temperaments.map((temperaments) => (
+            <option key={temperaments.id} value={temperaments.name}>
+              {temperaments.name}
             </option> ))
           }
         </select>
 
-        <select className='select' onChange={handleOrigin}>
-          <option value="">All Origins</option>
+        <select className='select' onChange={(event) => handleOrigin(event.target.value)}>
+          <option value="ALL">All Origins</option>
           <option value="API">API</option>
           <option value="Database">Database</option>
         </select>
