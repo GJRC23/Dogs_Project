@@ -97,13 +97,13 @@ const reducer = (state = initialState, { type, payload }) => {
             error: null,
         }
 
-    case BY_ORIGIN:
-        const originDogs = state.dogsCopy;
-        const filterDogs = originDogs.filter((dog) => payload === 'created' ? dog.createInDb : !dog.createInDb)
-        return {
-            ...state,
-            allDogs: filterDogs,
-        }
+        case BY_ORIGIN:
+            const originDogs = state.dogsCopy;
+            const filterDogs = originDogs.filter((dog) => payload === 'created' ? dog.createInDb : !dog.createInDb)
+            return {
+                ...state,
+                allDogs: filterDogs,
+            }
 
     case POST_DOG:
       return {

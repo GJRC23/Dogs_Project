@@ -62,8 +62,11 @@ export const filterBreedsByTemperament = (payload) => {
 };
 
 export const getByOrigin = (payload) => {
-  return { type: BY_ORIGIN, payload };
-};
+  return {
+      type: BY_ORIGIN,
+      payload
+  }
+}
 
 export const postDog = (dog) => {
   return async (dispatch) => {

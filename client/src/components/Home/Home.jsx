@@ -47,6 +47,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      
       <Nav />
 
       <div className='filters'>
@@ -70,9 +71,7 @@ const Home = () => {
         <select className='select' onChange={(event) => handleFilterByTemps(event)} defaultValue="Temperaments">
           <option value="All">All Temperaments</option>
           {tempState?.map((temperaments) => (
-            <option key={temperaments} value={temperaments}>
-              {temperaments}
-            </option> ))
+            <option key={temperaments} value={temperaments}>{temperaments}</option> ))
           }
         </select>
 

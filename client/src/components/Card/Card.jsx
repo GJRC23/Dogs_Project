@@ -6,19 +6,19 @@ const Card = ({ id, name, weight, temperaments, temperament, image, createInDb }
     <div className="card">
       <img className="cardImg" src={image} alt='' />
       <div className="datos">
+        
         <Link id= "name" to={`/detail/${id}`}>
           <h2 id="name">{name}</h2>
         </Link>
-          <h3 id="weight">Weight: {weight} kg</h3>
-          {createInDb ? (
-          <h3 id="temperament">
-            Temperaments: {temperaments.join(", ")}
-          </h3>
-        ) : (
-          <h3 id="temperament">
-            Temperaments: {temperament?.join(", ")}
-          </h3>
-        )}
+
+          <h3>Weight: {weight} kg</h3>
+
+        {createInDb && Array.isArray(temperaments) && temperaments.length ? (
+          <h3> Temperamentos: {temperaments.join(", ")} </h3>
+        ) : Array.isArray(temperament) && temperament.length ? (
+          <h3>Temperamentos: {temperament?.join(", ")} </h3>
+        ) : null}
+
       </div>
     </div>
   );
