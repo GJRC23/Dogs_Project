@@ -1,0 +1,134 @@
+.container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cache.desktopnexus.com/thumbseg/407/407949-bigthumbnail.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
+  row-gap: 20px;
+  padding: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.card h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.card label {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  row-gap: 40px;
+  padding: 10px;
+  color: white;
+}
+.card input,
+.card select {
+  width: 400px;
+  padding: 8px;
+  color: white;
+  border: 1px solid #f1c40f;
+  background-color: transparent;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.card ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: white;
+  list-style-type: none;
+}
+.card ul:focus{
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: white;
+  background-color: transparent;
+}
+.card li {
+  text-align: center;
+  border-color: #f1c40f;
+  border-style: solid;
+  border-width: 0.5px;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.card p {
+  width: fit-content;
+  padding: 5px;
+  background-color: red;
+  margin-top: 5px;
+}
+
+.submit {
+  text-align: center;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 5px 20px;
+  border-style: solid;
+  background-color: #f1c40f;
+  border-width: 0.5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.submit a:hover{
+  text-decoration: none;
+  background-color:rgba(0, 0, 0, 0.7);
+}
+.submit:hover {
+  color: #f1c40f;
+  background-color: transparent;
+  border-style: solid;
+  border-color: #f1c40f;
+  background-color:transparent;
+  }
+
+.BackBtnCreate{
+  font-size: 15px;
+  border-radius: 5px;
+  margin-right: 20px;
+  margin-left: -100px;
+  padding: 5px 20px;
+  border-style: solid;
+  background-color: #f1c40f;
+  border-width: 0.5px;
+  cursor: pointer;
+}
+.BackBtnCreate a:hover {
+  text-decoration: none;
+  background-color:rgba(0, 0, 0, 0.7);
+}
+.BackBtnCreate:hover {
+  color: #f1c40f;
+  background-color: transparent;
+  border-style: solid;
+  background-color:rgba(0, 0, 0, 0.7);
+  }
+
+.xBtn{
+  height: 20px;
+  width: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 90%;
+  }
+}

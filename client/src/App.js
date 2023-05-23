@@ -4,10 +4,9 @@ import { Routes, Route} from 'react-router-dom';
 import Home from './components/Home/Home.jsx';
 import LandingPage from './components/LandingPage/LandingPage';
 import Detail from './components/Detail/Detail';
-import Create from './components/Create/Create';
+import Form from './components/Form/Form';
 
 function App() {
-  
 
   return (
     <div className="App">
@@ -15,7 +14,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/home' element={<Home/>} />
         <Route path='/detail/:id' element={<Detail/>} />
-        <Route path='/create' element={<Create/>} />
+        <Route path='/create' element={<Form/>} />
       </Routes>
     </div>
   );

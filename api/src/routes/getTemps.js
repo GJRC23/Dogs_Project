@@ -4,8 +4,8 @@ const { getTemps } = require('../controllers/getTemps');
 
 // Ruta para obtener todos los temperamentos
 router.get('/', async (req, res) => {
+    const temperaments = await getTemps();
     try {
-        const temperaments = await getTemps();
         return res.json(temperaments);
     } catch (error) {
         console.error(error);

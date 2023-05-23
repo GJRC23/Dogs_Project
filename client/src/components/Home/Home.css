@@ -7,6 +7,16 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  .notification {
+    position: fixed;
+    top: 60px;
+    right: 15px;
+    padding: 10px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 4px;
+  }
   
   .home-page {
     height: 100vh;
@@ -20,6 +30,33 @@ body {
     color: black;
     text-decoration: none;
     padding-bottom: 10px;
+  }
+
+  .loadBtn {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    font-size: 15px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-left: 15px;
+    padding: 5px 20px;
+    background-color: #f1c40f;
+    border-width: 0.5px;
+    cursor: pointer;
+  }
+  
+  .loadBtn:hover {
+    background-color: transparent;
+    border-style: solid;
+    border-color: #f1c40f;
+    color: #f1c40f;
+  }
+  
+  .loadLogo {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
   }
 
   .select {

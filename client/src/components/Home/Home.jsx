@@ -4,7 +4,7 @@ import Nav from '../Nav/Nav.jsx';
 import Cards from '../Cards/Cards.jsx';
 import Paginate from '../Paginate/Paginate.jsx';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, getTemps, filterBreedsByTemperament, getByOrigin, orderCards, orderCardsByWeight} from "../../redux/actions";
 
@@ -13,8 +13,18 @@ const Home = () => {
   
   const dispatch = useDispatch();
 
-  const allDogs = useSelector(state => state.allDogs);
-  const temperaments = useSelector(state => state.temperaments);
+  const allDogs = useSelector((state) => state.dogs);
+  const tempState = useSelector((state) => state.temperaments);
+  
+  const handleClick = (event) => {
+    event.preventDefault();
+    dispatch(getDogs());
+  };
+
+  useEffect(() => {
+    dispatch(getDogs())
+    dispatch(getTemps())
+}, [dispatch]);
   
   const handleOrder = (event) => {
     const selectedOrder = event.target.value === "A" ? "A" : "D";
@@ -22,55 +32,55 @@ const Home = () => {
   };
   
   const handleWeightOrder = (event) => {
-    const selectedOrder = event.target.value === "A" ? "A" : "D";
-    dispatch(orderCardsByWeight(selectedOrder));
+    event.preventDefault();
+    dispatch(orderCardsByWeight(event.target.value));
   };
   
-  const handleFilter = (event) => {
-    const selectedTemperament = event.target.value;
-    dispatch(filterBreedsByTemperament(selectedTemperament));
+  const handleFilterByTemps = (event) => {
+    event.preventDefault();
+    dispatch(filterBreedsByTemperament(event.target.value));
   };
   
   const handleOrigin = (event) => {
-    dispatch(getByOrigin(event));
-}
-
-  useEffect(() => {
-
-    dispatch(getDogs())
-    dispatch(getTemps())
-
-}, [dispatch]);
+    event.preventDefault();
+    dispatch(getByOrigin(event.target.value));
+  };
 
   return (
     <div className="home-page">
       <Nav />
 
       <div className='filters'>
+        <button className="loadBtn" onClick={(event) => handleClick(event)}>
+        <img className='loadLogo' src="https://cdn-icons-png.flaticon.com/512/776/776862.png" alt="" />
+        Reload
+        Dogs
+        </button>
+
         <select className='select' onChange={handleOrder}>
           <option value="A">A-Z</option>
           <option value="D">Z-A</option>
         </select>
 
-        <select className="select" onChange={handleWeightOrder}>
-          <option value="">Sort by Weight</option>
-          <option value="ASC">Ascending</option>
-          <option value="DESC">Descending</option>
+        <select className="select" onChange={(event) => handleWeightOrder(event)} defaultValue="Weight">
+          <option value="">All Weights</option>
+          <option value="max">Weight Max-Min</option>
+          <option value="min">Weight Min-Max</option>
         </select>
 
-        <select className='select' onChange={handleFilter}>
-          <option value="">All Temperaments</option>
-          {temperaments.map((temperaments) => (
-            <option key={temperaments.id} value={temperaments.name}>
-              {temperaments.name}
+        <select className='select' onChange={(event) => handleFilterByTemps(event)} defaultValue="Temperaments">
+          <option value="All">All Temperaments</option>
+          {tempState?.map((temperaments) => (
+            <option key={temperaments} value={temperaments}>
+              {temperaments}
             </option> ))
           }
         </select>
 
-        <select className='select' onChange={(event) => handleOrigin(event.target.value)}>
-          <option value="ALL">All Origins</option>
-          <option value="API">API</option>
-          <option value="Database">Database</option>
+        <select className='select' onChange={(event) => handleOrigin(event)} defaultValue="Dogs">
+          <option value="">All Origins</option>
+          <option value="api">Existing</option>
+          <option value="created">Created</option>
         </select>
       </div>
 
