@@ -1,0 +1,49 @@
+.containerPag {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .number {
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: #f1c40f;
+    padding: 15px 20px;
+    margin: 0px 5px; /* Ajusta el margen a 5px */
+    cursor: pointer;
+  }
+  
+  .number:hover {
+    color: #f1c40f;
+    background-color: transparent;
+    border-style: solid;
+    border-color: #f1c40f;
+    cursor: pointer;
+  }
+  
+  .active {
+    color: #f1c40f;
+    background-color: transparent;
+    border-style: solid;
+    border-color: #f1c40f;
+    margin: 0px 5px; /* Ajusta el margen a 5px */
+    padding: 15px 20px;
+  }
+  
+  .page-btn {
+    font-size: 40px;
+    background-color: #f1c40f;
+  }
+  
+  .page-btn:hover {
+    font-size: 40px;
+    background-color: transparent;
+    color: #f1c40f;
+    border-style: solid;
+    border-color: #f1c40f;
+    cursor: pointer;
+  }

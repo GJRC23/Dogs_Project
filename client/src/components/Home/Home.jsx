@@ -2,11 +2,10 @@ import './Home.css';
 
 import Nav from '../Nav/Nav.jsx';
 import Cards from '../Cards/Cards.jsx';
-import Paginate from '../Paginate/Paginate.jsx';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, getTemps, filterBreedsByTemperament, getByOrigin, orderCards, orderCardsByWeight} from "../../redux/actions";
+import { getDogs, getTemps, filterBreedsByTemperament, getByOrigin, orderCards, orderCardsByWeight } from "../../redux/actions";
 
 
 const Home = () => {
@@ -84,11 +83,7 @@ const Home = () => {
         </select>
       </div>
 
-      <Cards allDogs={allDogs}/>
-
-      <div className="pagiCont">
-        <Paginate />
-      </div>
+      <Cards dogs={allDogs}/>
 
     </div>
   );

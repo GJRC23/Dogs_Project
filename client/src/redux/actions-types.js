@@ -10,8 +10,6 @@ export const BY_ORIGIN = "BY_ORIGIN";
 export const ORDER = 'ORDER';
 export const ORDER_WEIGHT = 'ORDER_WEIGHT';
 
-export const NEXT_PAGE = "NEXT_PAGE";
-export const BACK_PAGE = "BACK_PAGE";
 export const SET_PAGE = "SET_PAGE";
 
 export const SET_TEMPERAMENTS = 'SET_TEMPERAMENTS';

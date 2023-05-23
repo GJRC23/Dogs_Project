@@ -9,8 +9,6 @@ import {
   POST_DOG,
   ORDER,
   ORDER_WEIGHT,
-  NEXT_PAGE,
-  BACK_PAGE,
   SET_PAGE, 
 } from './actions-types';
 
@@ -45,16 +43,8 @@ export const getByName = (name) => {
   };
 }
 
-export const nextPage = () => {
-  return { type: NEXT_PAGE };
-};
-
-export const backPage = () => {
-  return { type: BACK_PAGE };
-};
-
-export const setPage = (pageNumber) => {
-  return { type: SET_PAGE, payload: pageNumber };
+export const setPage = (page) => {
+  return { type: SET_PAGE, payload: parseInt(page) };
 };
 
 export const orderCards = (order) => {

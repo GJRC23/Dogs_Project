@@ -7,8 +7,6 @@ import {
   POST_DOG,
   ORDER,
   ORDER_WEIGHT,
-  NEXT_PAGE,
-  BACK_PAGE,
   SET_PAGE,
 } from "./actions-types";
 
@@ -17,7 +15,7 @@ const initialState = {
   dogsCopy: [],
   temperaments: [],
   details: [],
-  page: 1
+  page: 1,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -77,10 +75,6 @@ const reducer = (state = initialState, { type, payload }) => {
           error: null,
       }
   
-    case NEXT_PAGE:
-        return { ...state, page: state.page + 1 };
-    case BACK_PAGE:
-        return { ...state, page: state.page - 1 };
     case SET_PAGE:
       return { ...state, page: payload };
 
