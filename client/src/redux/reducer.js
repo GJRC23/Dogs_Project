@@ -5,7 +5,7 @@ import {
   FILTER_BREEDS_BY_TEMPERAMENT,
   BY_ORIGIN,
   POST_DOG,
-  ORDER,
+  ORDER_BY_NAME,
   ORDER_WEIGHT,
   SET_PAGE,
 } from "./actions-types";
@@ -39,71 +39,82 @@ const reducer = (state = initialState, { type, payload }) => {
         allDogs: payload
       }
 
-    case ORDER:
-      const orderDogs = [...state.allDogs];
+    case ORDER_BY_NAME:
+      const sortedDogsByName = [...state.allDogs];
+      const sortOrderName = payload === 'Asc' ? 1 : -1;
+      sortedDogsByName.sort((dogA, dogB) => {
+        if (dogA.name > dogB.name) {
+          return 1 * sortOrderName;
+        }
+        if (dogB.name > dogA.name) {
+          return -1 * sortOrderName;
+        }
+        return 0;
+      });
+
       return {
         ...state,
-        allDogs:
-          payload === "A"
-            ? orderDogs.sort((a, b) => a.id - b.id)
-            : orderDogs.sort((a, b) => b.id - a.id)
+        allDogs: sortedDogsByName,
       }
 
     case ORDER_WEIGHT:
-      const sortedDogsByWeight = [...state.allDogs]; //? Guardo copia de estado para luego hacer el ordenamiento en ella
-      const weightAscendingOrder = payload === "min"; //? El orden será true(asc) o false(des)
+      const sortedDogsByWeight = [...state.allDogs];
+      const weightAscendingOrder = payload === "min";
 
-      sortedDogsByWeight.sort((first, second) => {  //? Función para hace el ordenar perros segun el peso usando sort
-          const parseWeight = weight => {
-              const parts = weight.split(" - ");
-              const average = parts.reduce((sum, part) => sum + parseInt(part), 0) //? Quito los espacios y guiones
-              //? Guardo el promedio del peso paraseado y si no se puede parsear guarda al final
-              return isNaN(average) ? Infinity : average;
-          };
-          const weightFirst = parseWeight(first.weight);  //? Guardo los dos pesos de los dos parámetros
-          const weightSecond = parseWeight(second.weight); //? para luego compararlos y setear el orden
+      sortedDogsByWeight.sort((first, second) => {
+        const parseWeight = (weight) => {
+          const parts = weight.split(" - ");
+          const average = parts.reduce((sum, part) => sum + parseInt(part), 0);
+          return isNaN(average) ? Infinity : average;
+        };
 
-          if (weightAscendingOrder) { //? Si el orden elegido es min(true) será ascendente
-              return weightFirst - weightSecond;
-          } else {
-              return weightSecond - weightFirst; //? de lo contrario será descendente
-          }
+        const weightFirst = parseWeight(first.weight);
+        const weightSecond = parseWeight(second.weight);
+
+        if (weightAscendingOrder) {
+          return weightFirst - weightSecond;
+        } else {
+          return weightSecond - weightFirst;
+        }
       });
+
       return {
-          ...state,
-          allDogs: sortedDogsByWeight,
-          error: null,
+        ...state,
+        allDogs: sortedDogsByWeight,
       }
   
     case SET_PAGE:
-      return { ...state, page: payload };
+      return { 
+        ...state, 
+        page: payload 
+      }
 
     case FILTER_BREEDS_BY_TEMPERAMENT:
-        const Dogs = state.dogsCopy //? Traigo toda la copia de perros
-        const filterDog = (payload === "All") ?
-            Dogs :
-            Dogs.filter(dog => dog.temperament?.includes(payload)); //? Comparo payload de los temperamentos
-        const filterDb = []; //? Acá guardo los temp de base de datos
-        Dogs.forEach(dog => { //? Busco si el id es string (UUID)
-            if (typeof dog.id === "string") {
-                dog.temperament?.forEach(tempDb => {
-                    if (tempDb === payload) filterDb.push(tempDb) //? Guardo los temp de perros de base de datos
-                })
-            }
-        })
-        return {
-            ...state,
-            allDogs: filterDog.concat(filterDb), //? Retorno todos los temp de API y los nuevos de DB juntos en un array
-            error: null,
-        }
+      const Dogs = state.dogsCopy //? Traigo toda la copia de perros
+      const filterDog = (payload === "All") ?
+          Dogs :
+          Dogs.filter(dog => dog.temperament?.includes(payload)); //? Comparo payload de los temperamentos
+      const filterDb = []; //? Acá guardo los temp de base de datos
+      Dogs.forEach(dog => { //? Busco si el id es string (UUID)
+          if (typeof dog.id === "string") {
+              dog.temperament?.forEach(tempDb => {
+                  if (tempDb === payload) filterDb.push(tempDb) //? Guardo los temp de perros de base de datos
+              })
+          }
+      })
+      return {
+          ...state,
+          allDogs: filterDog.concat(filterDb), //? Retorno todos los temp de API y los nuevos de DB juntos en un array
+          error: null,
+      }
 
-        case BY_ORIGIN:
-            const originDogs = state.dogsCopy;
-            const filterDogs = originDogs.filter((dog) => payload === 'created' ? dog.createInDb : !dog.createInDb)
-            return {
-                ...state,
-                allDogs: filterDogs,
-            }
+    case BY_ORIGIN:
+      const originDogs = state.dogsCopy;
+      const filterDogs = originDogs.filter((dog) => payload === 'created' ? dog.createInDb : !dog.createInDb)
+      return {
+          ...state,
+          allDogs: filterDogs,
+      }
 
     case POST_DOG:
       return {

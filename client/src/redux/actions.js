@@ -7,7 +7,7 @@ import {
   FILTER_BREEDS_BY_TEMPERAMENT,
   BY_ORIGIN,
   POST_DOG,
-  ORDER,
+  ORDER_BY_NAME,
   ORDER_WEIGHT,
   SET_PAGE, 
 } from './actions-types';
@@ -47,8 +47,8 @@ export const setPage = (page) => {
   return { type: SET_PAGE, payload: parseInt(page) };
 };
 
-export const orderCards = (order) => {
-  return { type: ORDER, payload: order.toString() };
+export const orderCardsByName = (payload) => {
+  return { type: ORDER_BY_NAME, payload };
 };
 
 export const orderCardsByWeight = (payload) => {

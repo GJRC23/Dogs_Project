@@ -5,7 +5,7 @@ import Cards from '../Cards/Cards.jsx';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, getTemps, filterBreedsByTemperament, getByOrigin, orderCards, orderCardsByWeight } from "../../redux/actions";
+import { getDogs, getTemps, filterBreedsByTemperament, getByOrigin, orderCardsByName, orderCardsByWeight } from "../../redux/actions";
 
 
 const Home = () => {
@@ -25,10 +25,10 @@ const Home = () => {
     dispatch(getTemps())
 }, [dispatch]);
   
-  const handleOrder = (event) => {
-    const selectedOrder = event.target.value === "A" ? "A" : "D";
-    dispatch(orderCards(selectedOrder));
-  };
+const handleOrderByName = (event) => {
+    event.preventDefault();
+    dispatch(orderCardsByName(event.target.value));
+};
   
   const handleWeightOrder = (event) => {
     event.preventDefault();
@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <div className="home-page">
       
-      <Nav />
+      <Nav/>
 
       <div className='filters'>
         <button className="loadBtn" onClick={(event) => handleClick(event)}>
@@ -57,9 +57,9 @@ const Home = () => {
         Dogs
         </button>
 
-        <select className='select' onChange={handleOrder}>
-          <option value="A">A-Z</option>
-          <option value="D">Z-A</option>
+        <select className='select' onChange={(event) => handleOrderByName(event)} defaultValue="Name">
+          <option value="Asc">A-Z</option>
+          <option value="Dec">Z-A</option>
         </select>
 
         <select className="select" onChange={(event) => handleWeightOrder(event)} defaultValue="Weight">

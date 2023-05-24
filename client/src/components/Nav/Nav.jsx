@@ -2,7 +2,7 @@ import './Nav.css';
 import SearchBar from '../SearchBar/SearchBar.jsx';
 import { Link } from 'react-router-dom';
 
-const Nav = ({ handleChange, handleSubmit }) => {
+const Nav = () => {
   return (
     <nav>
         <Link to='/' className='agregarBtn'>Back</Link>
