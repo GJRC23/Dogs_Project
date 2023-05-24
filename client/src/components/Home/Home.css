@@ -7,16 +7,6 @@ body {
     margin: 0;
     padding: 0;
   }
-
-  .notification {
-    position: fixed;
-    top: 60px;
-    right: 15px;
-    padding: 10px;
-    background-color: #ff0000;
-    color: #ffffff;
-    border-radius: 4px;
-  }
   
   .home-page {
     height: 100vh;

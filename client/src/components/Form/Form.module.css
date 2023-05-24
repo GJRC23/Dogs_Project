@@ -71,10 +71,12 @@
   margin-right: 100px;
 }
 .card p {
+  color: white;
   width: fit-content;
   padding: 5px;
   background-color: red;
   margin-top: 5px;
+  border-radius: 5px;
 }
 
 .submit {

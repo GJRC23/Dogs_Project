@@ -3,7 +3,7 @@
     position: relative;
     border-style:solid;
     border-radius: 5px;
-    margin: 25px;
+    margin: 20px;
     text-align: left;
     font-size: small;
     width: 250px;
@@ -35,4 +35,8 @@
 #name:hover{
     color: goldenrod;
     text-decoration: none;
+}
+
+.pres:hover{
+  transform: scale(1.05);
 }

@@ -3,8 +3,7 @@ const { Op } = require('sequelize');
 const { getTemps } = require('./getTemps');
 
 const postDogs = async (name, height, weight, age, image, temperament, createInDb) => {
-    //* Buscamoos si ya existe un perro con el mismo nombre en la base de datos usando
-    //* el operador Op.iLike para buscar sin importar mayúsculas o minúsculas
+    // Search if there's a dog with the same name in de DB using the operator Op.ilike to search without taking in consideration big  or smallCaps.
     const dbResponse = await Dog.findAll({
         where: {
             name: {
@@ -14,8 +13,8 @@ const postDogs = async (name, height, weight, age, image, temperament, createInD
     });
     console.log(dbResponse);
     if (dbResponse.length) throw new Error("There is already a dog with that name");
-    //* Si la base de datos ya tiene un perro con ese nombre devuelve un mensaje
-    //* Si no existe un perro con ese nombre, crea uno nuevo en la base de datos
+    // If the DB already has a dog with that name ir returns a message
+    // if it doesn't exist the DB will create a new name.
     const newDog = await Dog.create({
         name: name,
         height: height,
@@ -24,8 +23,7 @@ const postDogs = async (name, height, weight, age, image, temperament, createInD
         image: image,
         createInDb: true,
     });
-    //* Verifico si la tabla de temperamentos esté cargada usando count(), de no estar cargada, la creamos
-    //* invocando a getAllTemps
+    // We check if the temperaments table its loaded using count(), if not we create invoking getTemps
     const temperamentCount = await Temperament.count();
     if (temperamentCount === 0) {
         await getTemps();
@@ -38,7 +36,7 @@ const postDogs = async (name, height, weight, age, image, temperament, createInD
         }
         tempsFound.push(tempFound);
     }
-    //* Añadimos el temperamento mediante método add de SQL, gracias a la relación entre Dog y Temperament
+    // We add the temperament with add method from SQL, thanks to the relation between Dog and Temperament
     await newDog.addTemperament(tempsFound);
     return newDog;
 }

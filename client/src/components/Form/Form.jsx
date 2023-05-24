@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { postDog, getTemps } from "../../redux/actions";
 import { validate } from "./validate";
 // import { Link } from "react-router-dom"; //? Proximamente NavBar
@@ -8,6 +8,7 @@ import styles from "../Form/Form.module.css";
 
 const Form = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     id: "",
     name: "",
@@ -74,6 +75,7 @@ const Form = () => {
     if (Object.keys(validationErrors).length === 0) {
       dispatch(postDog(input)).then((response) => {});
       alert("Breed created successfully");
+      navigate("/home");
     } else {
       alert("Please fix the following errors:");
       setErrors(validationErrors);
@@ -91,32 +93,39 @@ const Form = () => {
 
       <div className={`${styles.card} ${styles.Form}`}>
         <form onSubmit={handleSubmit}>
+
             <h1>Create your own Dog !</h1>
+
             <div className={styles.FormText}>
               <label>Breed:</label>
               <input type="text" value={input.name} name="name" onChange={handleChange}/>
               {errors.name && <p>{errors.name}</p>}
               <br />
+
               <label>Height:</label>
               <input type="text" value={input.height} name="height" onChange={handleChange} />
               {errors.height && <p>{errors.height}</p>}
               <br />
+
               <label>Weight:</label>
               <input type="text" value={input.weight} name="weight" onChange={handleChange} />
               {errors.weight && <p>{errors.weight}</p>}
               <br />
+
               <label>Life Span:</label>
               <input type="text" value={input.age} name="age" onChange={handleChange} />
               {errors.age && <p>{errors.age}</p>}
               <br />
+
               <label>Image:</label>
               <input type="text" value={input.image} name="image" onChange={handleChange} />
               {errors.image && <p>{errors.image}</p>}
               <br />
+
               <label>Temperament:</label>
               {errors.temperaments && <p>{errors.temperaments}</p>}
               <select className={styles.tempOp} onChange={handleSelect}>
-                <option className={styles.tempBtn} value="">Seleccionar</option>
+                <option className={styles.tempBtn} value="">Select</option>
                 {filteredTemps?.map((temp) => (
                   <option key={temp} value={temp}> {temp} </option>
                 ))}
@@ -132,6 +141,7 @@ const Form = () => {
                   </div>
                 ))}
               </ul>
+
               <button className={styles.submit} type="submit">
                 Create
               </button>
